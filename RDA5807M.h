@@ -402,6 +402,20 @@ class RDA5807M
         *              addition to returning false
         */
         bool volumeDown(bool alsoMute = false);
+		
+        /*
+        * Description:
+        *   Set volume to a given value.
+        */
+		
+		void setVolume(uint8_t value);
+		
+        /*
+        * Description:
+        *   Get current volume level back.
+        */
+		
+		uint8_t getVolume();
 
         /*
         * Description:

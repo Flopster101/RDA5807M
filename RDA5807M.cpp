@@ -118,6 +118,18 @@ bool RDA5807M::volumeDown(bool alsoMute) {
         return false;
 };
 
+void RDA5807M::setVolume(uint8_t value)
+{
+    if ( value > 15 ) value = 15;
+	updateRegister(RDA5807M_REG_VOLUME, RDA5807M_VOLUME_MASK, value);
+}
+
+uint8_t RDA5807M::getVolume()
+{
+	const byte volume = getRegister(RDA5807M_REG_VOLUME) & RDA5807M_VOLUME_MASK;
+    return volume;
+}
+
 void RDA5807M::seekUp(bool wrap) {
     updateRegister(RDA5807M_REG_CONFIG,
                    (RDA5807M_FLG_SEEKUP | RDA5807M_FLG_SEEK |
